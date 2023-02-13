@@ -1,12 +1,12 @@
 import { Container } from "@mantine/core";
 import Head from "next/head";
 import { AppConfig, showConnect, UserData, UserSession } from "@stacks/connect";
-import { ConnectWallet } from "./components/ConnectWallet";
+import { ConnectWallet } from "../components/ConnectWallet";
 import { useEffect, useState } from "react";
 import { DIDSession } from "did-session";
 import { StacksWebAuth, getAccountIdByNetwork } from "@didtools/pkh-stacks";
 import { ComposeClient } from "@composedb/client";
-import { TodoList } from "./components/TodoList";
+import { TodoList } from "../components/TodoList";
 import { composeClient } from "@/lib/composeDB";
 
 const appConfig = new AppConfig(["store_write"]);

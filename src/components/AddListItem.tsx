@@ -14,6 +14,8 @@ export const AddListItem = () => {
           clientMutationId
           document {
             id
+            title
+            completed
           }
         }
       }
@@ -32,8 +34,8 @@ export const AddListItem = () => {
             },
           },
         },
-        onCompleted: (data) => {
-          console.log(data);
+        onCompleted: (data, errors) => {
+          console.log(data, errors);
         },
       });
     }

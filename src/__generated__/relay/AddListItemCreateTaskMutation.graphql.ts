@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<52e8733195d12baaa1ef00f6d477d0d5>>
+ * @generated SignedSource<<c65ca076fcb4061eb0016cd3c0939b2e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -24,7 +24,9 @@ export type AddListItemCreateTaskMutation$data = {
   readonly createTask: {
     readonly clientMutationId: string | null;
     readonly document: {
+      readonly completed: boolean;
       readonly id: string;
+      readonly title: string;
     };
   } | null;
 };
@@ -77,6 +79,20 @@ v1 = [
             "kind": "ScalarField",
             "name": "id",
             "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "title",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "completed",
+            "storageKey": null
           }
         ],
         "storageKey": null
@@ -103,16 +119,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "15e4f39d0e1bc0fbc30b7f413f3dca42",
+    "cacheID": "b90915d18d3e853d80916c3374b3775d",
     "id": null,
     "metadata": {},
     "name": "AddListItemCreateTaskMutation",
     "operationKind": "mutation",
-    "text": "mutation AddListItemCreateTaskMutation(\n  $input: CreateTaskInput!\n) {\n  createTask(input: $input) {\n    clientMutationId\n    document {\n      id\n    }\n  }\n}\n"
+    "text": "mutation AddListItemCreateTaskMutation(\n  $input: CreateTaskInput!\n) {\n  createTask(input: $input) {\n    clientMutationId\n    document {\n      id\n      title\n      completed\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "3190c21f9c2d48de8b20c6350d516124";
+(node as any).hash = "faf8d4bad8fb63fee357654b29c309bc";
 
 export default node;
