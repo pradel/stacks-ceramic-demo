@@ -1,5 +1,5 @@
 import { TodoItem_task$key } from "@/__generated__/relay/TodoItem_task.graphql";
-import { Checkbox, Group, Stack, TextInput, Title } from "@mantine/core";
+import { Checkbox, Group, Stack, Text, TextInput, Title } from "@mantine/core";
 import { graphql, useFragment } from "react-relay";
 
 export const TodoItem = (props: { task: TodoItem_task$key }) => {
@@ -19,7 +19,7 @@ export const TodoItem = (props: { task: TodoItem_task$key }) => {
   return (
     <Group>
       <Checkbox checked={task.completed} />
-      <TextInput value={task.title} />
+      <Text>{task.title}</Text>
     </Group>
   );
 };

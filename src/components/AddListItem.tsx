@@ -14,8 +14,19 @@ export const AddListItem = () => {
           clientMutationId
           document {
             id
-            title
-            completed
+            ...TodoItem_task
+          }
+          # TODO use updater instead of this
+          viewer {
+            id
+            taskList(last: 10) @connection(key: "TodoList_taskList") {
+              edges {
+                node {
+                  id
+                  ...TodoItem_task
+                }
+              }
+            }
           }
         }
       }
@@ -34,8 +45,35 @@ export const AddListItem = () => {
             },
           },
         },
+        // updater: (store) => {
+        //   const payload = store.getRootField("createTask");
+        //   const newEdge = payload.getLinkedRecord("document");
+        //   const userProxy = store.get("client:root:viewer");
+
+        //   console.log("updater", payload, newEdge, userProxy);
+
+        //   const conn = ConnectionHandler.getConnection(
+        //     userProxy!,
+        //     "TodoList_taskList"
+        //   );
+        //   ConnectionHandler.insertEdgeAfter(conn!, newEdge);
+        // },
+        // configs: [
+        //   {
+        //     type: "RANGE_ADD",
+        //     parentID: "client:root",
+        //     connectionInfo: [
+        //       {
+        //         key: "TodoList_taskList",
+        //         rangeBehavior: "prepend",
+        //       },
+        //     ],
+        //     edgeName: "document",
+        //   },
+        // ],
         onCompleted: (data, errors) => {
           console.log(data, errors);
+          setTitle("");
         },
       });
     }

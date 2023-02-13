@@ -10,7 +10,7 @@ export const TodoList = () => {
       query TodoListQuery {
         viewer {
           id
-          taskList(first: 10) {
+          taskList(last: 10) @connection(key: "TodoList_taskList") {
             edges {
               node {
                 id
@@ -24,16 +24,13 @@ export const TodoList = () => {
     {}
   );
 
-  console.log(data);
-
   return (
     <>
       <Title>My todos</Title>
       <Stack>
-        {data.viewer &&
-          data.viewer.taskList!.edges!.map((edge) => (
-            <TodoItem key={edge?.node?.id} task={edge!.node!} />
-          ))}
+        {data.viewer?.taskList?.edges?.map((edge) => (
+          <TodoItem key={edge?.node?.id} task={edge!.node!} />
+        ))}
         <AddListItem />
       </Stack>
     </>
