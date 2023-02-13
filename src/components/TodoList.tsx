@@ -27,7 +27,7 @@ export const TodoList = () => {
   return (
     <>
       <Title>My todos</Title>
-      <Stack>
+      <Stack mt={40}>
         {data.viewer?.taskList?.edges?.map((edge) => (
           <TodoItem key={edge?.node?.id} task={edge!.node!} />
         ))}

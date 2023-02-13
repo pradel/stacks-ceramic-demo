@@ -97,7 +97,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container mt={80} size="xs">
+      <Container mt={80} mb={80} size="xs">
         {!user ? <ConnectWallet onConnect={handleConnect} /> : <TodoList />}
       </Container>
     </>
