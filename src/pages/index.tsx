@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import { DIDSession } from "did-session";
 import { StacksWebAuth, getAccountIdByNetwork } from "@didtools/pkh-stacks";
 import { ComposeClient } from "@composedb/client";
+import { TodoList } from "./components/TodoList";
+import { composeClient } from "@/lib/composeDB";
 
 const appConfig = new AppConfig(["store_write"]);
 const userSession = new UserSession({ appConfig });
-
-// const compose = new ComposeClient();
 
 export default function Home() {
   const [user, setUser] = useState<UserData>();
@@ -23,7 +23,6 @@ export default function Home() {
     if (userData) {
       loadSession(userData).then((session) => {
         if (session) {
-          // compose.setDID(session.did);
           setUser(userData);
         }
       });
@@ -54,6 +53,10 @@ export default function Home() {
         resources: ["ceramic://*"],
       });
       localStorage.setItem("didsession", session.serialize());
+    }
+
+    if (session) {
+      composeClient.setDID(session.did);
     }
 
     return session;
@@ -93,7 +96,7 @@ export default function Home() {
       </Head>
 
       <Container mt={80} size="xs">
-        {!user ? <ConnectWallet onConnect={handleConnect} /> : null}
+        {!user ? <ConnectWallet onConnect={handleConnect} /> : <TodoList />}
       </Container>
     </>
   );
