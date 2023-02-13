@@ -1,6 +1,14 @@
 # stacks-ceramic-demo
 
-A simple todos app built with Stacks and Ceramic ComposeDB
+A simple todos app built with Stacks and Ceramic ComposeDB.
+
+Tech stack:
+
+- stacks.js
+- composeDB
+- next.js
+- relay
+- mantine
 
 ## Getting Started
 
