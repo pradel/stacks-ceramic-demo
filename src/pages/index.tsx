@@ -19,13 +19,15 @@ export default function Home() {
    * When app load check if user is already logged in
    */
   useEffect(() => {
-    const userData = userSession.loadUserData();
-    if (userData) {
-      loadSession(userData).then((session) => {
-        if (session) {
-          setUser(userData);
-        }
-      });
+    if (userSession.isUserSignedIn()) {
+      const userData = userSession.loadUserData();
+      if (userData) {
+        loadSession(userData).then((session) => {
+          if (session) {
+            setUser(userData);
+          }
+        });
+      }
     }
   }, []);
 
