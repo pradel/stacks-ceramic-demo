@@ -9,6 +9,15 @@ export const TodoList = () => {
       query TodoListQuery {
         viewer {
           id
+          taskList(first: 10) {
+            edges {
+              node {
+                id
+                title
+                completed
+              }
+            }
+          }
         }
       }
     `,

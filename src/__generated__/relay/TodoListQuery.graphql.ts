@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<995990a6c03bcdf7a505e91816dfa795>>
+ * @generated SignedSource<<8638646ec1f0f52e1bd16fc4a0817391>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,6 +13,15 @@ export type TodoListQuery$variables = {};
 export type TodoListQuery$data = {
   readonly viewer: {
     readonly id: string;
+    readonly taskList: {
+      readonly edges: ReadonlyArray<{
+        readonly node: {
+          readonly completed: boolean;
+          readonly id: string;
+          readonly title: string;
+        } | null;
+      } | null> | null;
+    } | null;
   } | null;
 };
 export type TodoListQuery = {
@@ -21,7 +30,14 @@ export type TodoListQuery = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v1 = [
   {
     "alias": null,
     "args": null,
@@ -30,12 +46,60 @@ var v0 = [
     "name": "viewer",
     "plural": false,
     "selections": [
+      (v0/*: any*/),
       {
         "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "id",
-        "storageKey": null
+        "args": [
+          {
+            "kind": "Literal",
+            "name": "first",
+            "value": 10
+          }
+        ],
+        "concreteType": "TaskConnection",
+        "kind": "LinkedField",
+        "name": "taskList",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "TaskEdge",
+            "kind": "LinkedField",
+            "name": "edges",
+            "plural": true,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Task",
+                "kind": "LinkedField",
+                "name": "node",
+                "plural": false,
+                "selections": [
+                  (v0/*: any*/),
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "title",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "completed",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": "taskList(first:10)"
       }
     ],
     "storageKey": null
@@ -47,7 +111,7 @@ return {
     "kind": "Fragment",
     "metadata": null,
     "name": "TodoListQuery",
-    "selections": (v0/*: any*/),
+    "selections": (v1/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
@@ -56,19 +120,19 @@ return {
     "argumentDefinitions": [],
     "kind": "Operation",
     "name": "TodoListQuery",
-    "selections": (v0/*: any*/)
+    "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "73c7605d1524826618cf01ca07cd88d3",
+    "cacheID": "4a286dd35fae4fd1d84ee0d30d83f0da",
     "id": null,
     "metadata": {},
     "name": "TodoListQuery",
     "operationKind": "query",
-    "text": "query TodoListQuery {\n  viewer {\n    id\n  }\n}\n"
+    "text": "query TodoListQuery {\n  viewer {\n    id\n    taskList(first: 10) {\n      edges {\n        node {\n          id\n          title\n          completed\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ab7bb1b84cfcd27133568dc8a5804ca6";
+(node as any).hash = "8175ca53d06d1fa1a73fd0bdfc2b4bb8";
 
 export default node;
