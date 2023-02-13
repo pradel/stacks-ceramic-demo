@@ -1,0 +1,6 @@
+type Task @createModel(accountRelation: LIST, description: "simple task") {
+  author: DID! @documentAccount
+  version: CommitID! @documentVersion
+  title: String! @string(minLength: 0, maxLength: 100)
+  completed: Boolean! @boolean
+}

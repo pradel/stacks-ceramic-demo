@@ -1,0 +1,18 @@
+{
+  "models": {
+    "Task": {
+      "id": "kjzl6hvfrbw6c934mhelflzabn0qkgeu0ebgxx0c1tdnsvnyagfqptd80psr6c8",
+      "accountRelation": { "type": "list" }
+    }
+  },
+  "objects": {
+    "Task": {
+      "title": { "type": "string", "required": true },
+      "completed": { "type": "boolean", "required": true },
+      "author": { "type": "view", "viewType": "documentAccount" },
+      "version": { "type": "view", "viewType": "documentVersion" }
+    }
+  },
+  "enums": {},
+  "accountData": { "taskList": { "type": "connection", "name": "Task" } }
+}
