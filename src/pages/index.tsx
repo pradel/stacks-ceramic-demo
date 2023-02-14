@@ -73,14 +73,6 @@ export default function Home() {
       },
       onFinish: async () => {
         const userData = userSession.loadUserData();
-
-        const stacksProvider = window.StacksProvider;
-        const address = userData.profile.stxAddress.mainnet;
-        const accountId = getAccountIdByNetwork("mainnet", address);
-        const authMethod = await StacksWebAuth.getAuthMethod(
-          stacksProvider,
-          accountId
-        );
         const session = await loadSession(userData);
 
         console.log(session);
